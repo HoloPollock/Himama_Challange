@@ -1,0 +1,5 @@
+<%= form_for @changeset, employee_path(@conn, :login), fn f -> %>
+     <%= text_input f, :name, placeholder: "User", class: "form-control" %>
+     <%=error_tag f, :name%>
+    <%= submit "Log In",  class: "btn btn-primary"%>
+<% end %>

@@ -1,0 +1,22 @@
+<%= form_for @changeset, checkin_path(@conn, :update, @clock), fn f -> %>
+    <div class="input-field col s12 m6">
+        Check In Time:
+        <%= datetime_select f, :check_in, year: [options: 2000..2019], second: []%>
+        Check out Time:
+        <%= datetime_select f, :check_out,year: [options: 2000..2019], second: []%>
+    <div>
+    <%=error_tag f, :clock%>
+<%= submit "Save Changes", class: " btn btn-primary" %>
+<% end %>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    var elems = document.querySelectorAll('select');
+    var instances = M.FormSelect.init(elems, options);
+  });
+
+  
+  $(document).ready(function(){
+    $('select').formSelect();
+  });
+</script>

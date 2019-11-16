@@ -1,0 +1,22 @@
+<h3>Clock events</h3>
+
+<ul class="collection">
+    <%= for clock <- @clocks do %>
+        
+         <%= if @conn.assigns.employee != nil do %>
+            <%= if @conn.assigns.employee.id == clock.employee_id do %>
+            <li class="collection-item">
+            Check in:
+            <%= clock.check_in %>
+            Check out: 
+            <%= clock.check_out%>
+            <div class="right">
+                <%= link "Edit", to: checkin_path(@conn, :edit, clock) %>
+                  |   
+                <%= link "Delete", to: checkin_path(@conn, :delete, clock), method: :delete %>
+            </div>
+            </li>
+             <% end %>
+         <% end %>
+    <%end%>
+</ul>

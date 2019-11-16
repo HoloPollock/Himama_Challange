@@ -1,0 +1,26 @@
+<%= if @conn.assigns.checked_in do %>
+    <%= form_for @changeset, checkin_path(@conn, :create), fn f -> %>
+        <%= submit "Check In",  class: "btn btn-primary", id: "checked_in"%>
+    <% end %>
+<% else %>
+    <%= form_for @changeset, checkin_path(@conn, :create), fn f -> %>
+        <%= submit "Check In",  class: "btn btn-primary" %>
+    <% end %>
+<% end %>
+
+<%= if not @conn.assigns.checked_in do %>
+    <%= form_for @changeset, checkin_path(@conn, :checkout), fn f -> %>
+        <%= submit "Check Out",  class: "btn btn-primary", id: "checked_in"%>
+    <% end %>
+<% else %>
+    <%= form_for @changeset, checkin_path(@conn, :checkout), fn f -> %>
+        <%= submit "Check Out",  class: "btn btn-primary" %>
+    <% end %>
+<% end %>
+
+<script>
+ button = document.getElementById("checked_in")
+ if (button != null) {
+     button.disabled = true
+ }
+</script>
